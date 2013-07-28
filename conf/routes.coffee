@@ -11,6 +11,6 @@ module.exports =
       app.get '/',         (req, res) -> res.sendfile path.join(publicDir, 'index.html')
       app.get '/static/*', (req, res) -> res.sendfile path.join(publicDir, req.params[0])
 
-      serverController = new ServerController
+      serverController = new ServerController app
 
       app.get     '/api/server/id/:id',                       serverController.get
