@@ -1,5 +1,5 @@
 class ServerController
-   constructor: (@rest) ->
+   constructor: () ->
 
    get: (request, response) =>
       response.end 'hello world!'
