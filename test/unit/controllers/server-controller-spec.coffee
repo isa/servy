@@ -7,7 +7,7 @@ describe 'ServerController', ->
 
    before () ->
 
-   it '"get" should return a sample hello world', () ->
+   it '"get" should return a list of servers registered to the system', () ->
       req = Object.create
       res =
          end: sinon.spy()
