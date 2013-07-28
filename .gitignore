@@ -1,0 +1,9 @@
+# OS Specific BS
+.DS_Store
+
+# Files
+*.log
+
+# Directories
+node_modules
+target

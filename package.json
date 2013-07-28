@@ -1,0 +1,37 @@
+{
+   "name": "servy",
+   "version": "0.0.1",
+   "description": "Servy",
+   "main": "app.js",
+   "repository": {
+      "type": "svn",
+      "url": "https://github.com/isa/servy.git"
+   },
+   "keywords": [
+      "servy",
+      "registry",
+      "repository",
+      "directory",
+      "server"
+   ],
+   "author": "Isa Goksu <isa.goksu@gmail.com>",
+   "contributors": [
+      {"name": "Selim Ober", "email": "selim.ober@gmail.com"}
+   ],
+   "dependencies": {
+      "express": "~3.3.3",
+      "yaml-config": "~0.2.1",
+      "winston": "~0.7.2",
+      "express-winston": "~0.2.1"
+   },
+   "devDependencies": {
+      "mocha": "~1.12.0",
+      "should": "~1.2.2",
+      "sinon": "~1.7.3",
+      "grunt": "~0.4.1",
+      "grunt-contrib-watch": "~0.4.4",
+      "grunt-contrib-clean": "~0.4.1",
+      "grunt-contrib-coffee": "~0.7.0",
+      "grunt-shell": "~0.3.0"
+   }
+}

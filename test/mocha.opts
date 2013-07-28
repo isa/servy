@@ -1,0 +1,4 @@
+--compilers coffee:coffee-script
+--reporter progress
+--require sinon
+--require should
