@@ -9,7 +9,7 @@ Sequelize = require('sequelize-sqlite').sequelize
 sqlite    = require('sequelize-sqlite').sqlite
 
 # Configuration
-settings = config.readConfig require.resolve('./conf/config.yaml')
+settings = config.readConfig require.resolve './conf/config.yaml'
 publicDir = path.join __dirname, 'public'
 
 sequelize = new Sequelize 'database', 'username', 'password',
@@ -28,20 +28,27 @@ winston.add winston.transports.File,
 app.configure () ->
    app.use express.bodyParser()
    app.use express.cookieParser()
-   app.use expressWinston.logger({ transports: [ new winston.transports.File(json: true, filename: "#{settings.app.logDir}/access.log") ] })
+   app.use expressWinston.logger
+      transports: [
+         new winston.transports.File
+            json: true
+            filename: "#{settings.app.logDir}/access.log"
+      ]
    app.use app.router
    app.use express.static(publicDir, { maxAge: settings.misc.oneDay })
    app.set 'sequelize', sequelize
    app.set 'settings', settings
 
 app.configure 'development', () ->
-   app.use express.errorHandler({ dumpExceptions: true, showStack: true })
+   app.use express.errorHandler
+      dumpExceptions: true
+      showStack: true
 
 # ------- init routes -------
-apiRoutes = require path.join(__dirname, 'conf', 'routes')
-apiRoutes.initRoutes(app, publicDir)
+apiRoutes = require path.join __dirname, 'conf/routes'
+apiRoutes.initRoutes app, publicDir
 
 # ------- run web server -------
 server = http.createServer(app)
 server.listen settings.app.port, () ->
-   winston.info "Listening on port %s...", settings.app.port;
+   winston.info "Listening on port %s...", settings.app.port
