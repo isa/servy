@@ -4,7 +4,7 @@
    "description": "Servy",
    "main": "app.js",
    "repository": {
-      "type": "svn",
+      "type": "git",
       "url": "https://github.com/isa/servy.git"
    },
    "keywords": [
