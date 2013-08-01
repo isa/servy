@@ -31,7 +31,7 @@ describe 'ServerController', ->
 
       app =
          get: sinon.stub().returns
-            find: sinon.stub().returns expected_servers[0]
+            find: sinon.stub().returns expected_servers
 
       req = Object.create
       res =
@@ -40,5 +40,4 @@ describe 'ServerController', ->
       sut = new ServerController app
       sut.get req, res
 
-      sinon.assert.calledWith res.end, sinon.match
-         name: 'dummy server'
+      sinon.assert.calledWith res.end, sinon.match JSON.stringify expected_servers[0]
