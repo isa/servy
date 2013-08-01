@@ -1,5 +1,5 @@
 --compilers coffee:coffee-script
 --recursive
---reporter progress
+--reporter spec
 --require sinon
 --require should
