@@ -24,7 +24,7 @@ describe 'ServerController', ->
 
       res.end.calledWith(JSON.stringify expected_servers).should.be.ok
 
-   it '"get" should a list of servers when at least one server is registered', () ->
+   it '"get" should return a list of servers when at least one server is registered', () ->
       expected_servers = [
          name: 'dummy server'
       ]
@@ -40,4 +40,4 @@ describe 'ServerController', ->
       sut = new ServerController app
       sut.get req, res
 
-      sinon.assert.calledWith res.end, sinon.match JSON.stringify expected_servers[0]
+      sinon.assert.calledWith res.end, sinon.match JSON.stringify expected_servers
