@@ -1,3 +1,4 @@
+# node modules
 path = require 'path'
 sinon = require 'sinon'
 
@@ -5,15 +6,39 @@ ServerController = require path.join __dirname, '../../../controllers/server-con
 
 describe 'ServerController', ->
 
-   before () ->
-      @app = sinon.spy()
+   # before () ->
 
-   it '"get" should return a list of servers registered to the system', () ->
+   it '"get" should return an empty list of servers when nothing is registered', () ->
+      expected_servers = []
+
+      app =
+         get: sinon.stub().returns
+            find: sinon.stub().returns expected_servers
+
       req = Object.create
       res =
          end: sinon.spy()
 
-      sut = new ServerController @app
+      sut = new ServerController app
       sut.get req, res
 
-      res.end.calledWith('hello world!').should.be.ok
+      res.end.calledWith(JSON.stringify expected_servers).should.be.ok
+
+   it '"get" should a list of servers when at least one server is registered', () ->
+      expected_servers = [
+         name: 'dummy server'
+      ]
+
+      app =
+         get: sinon.stub().returns
+            find: sinon.stub().returns expected_servers[0]
+
+      req = Object.create
+      res =
+         end: sinon.spy()
+
+      sut = new ServerController app
+      sut.get req, res
+
+      sinon.assert.calledWith res.end, sinon.match
+         name: 'dummy server'

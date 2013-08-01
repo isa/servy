@@ -31,7 +31,7 @@ module.exports = (grunt) ->
             command: "coffee app.coffee"
 
          unit:
-            command: "#{MODULES_BIN_DIR}/mocha test/unit"
+            command: "#{MODULES_BIN_DIR}/mocha --recursive test/unit"
 
          integration:
             command: "#{MODULES_BIN_DIR}/mocha test/integration"

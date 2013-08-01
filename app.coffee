@@ -44,6 +44,10 @@ app.configure 'development', () ->
       dumpExceptions: true
       showStack: true
 
+# ------- init models -------
+Server = sequelize.define 'Server', require path.join __dirname, 'models/server'
+app.set 'Server', Server
+
 # ------- init routes -------
 apiRoutes = require path.join __dirname, 'conf/routes'
 apiRoutes.initRoutes app, publicDir

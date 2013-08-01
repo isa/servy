@@ -1,7 +1,9 @@
 class ServerController
-   constructor: (@app) ->
+   constructor: (app) ->
+      @Server = app.get 'Server'
 
-   get: (request, response) =>
-      response.end 'hello world!'
+   get: (request, response) ->
+      servers = @Server.find()
+      response.end JSON.stringify servers
 
 module.exports = ServerController

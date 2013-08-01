@@ -1,6 +1,6 @@
-require 'sequelize'
+Sequelize = require('sequelize-sqlite').sequelize
 
-Server = sequelize.define 'Server',
+Server =
    id:
       type: Sequelize.INTEGER
       autoIncrement: true
